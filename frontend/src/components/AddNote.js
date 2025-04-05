@@ -29,15 +29,15 @@ const AddNote = (props) => {
 
     addNote(note.title, note.description, note.tag);
     props.showAlert("Note Added Successfully", "success");
-    
+
     setNote({ title: "", description: "", tag: "" });
-    setErrors({ title: "", description: "" }); // Clear errors after submission
+    setErrors({ title: "", description: "" });
   };
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
 
-    // Live Validation
+    // Live validation
     if (e.target.name === "title" && e.target.value.length >= 5) {
       setErrors((prev) => ({ ...prev, title: "" }));
     }
@@ -48,9 +48,9 @@ const AddNote = (props) => {
 
   return (
     <div className="container my-4 p-4 border rounded shadow-sm bg-light">
-      <h2 className="text-center fw-bold">➕ Add New Note</h2>
-      <form className="mt-3">
-        <div className="mb-3">
+      <h2 className="text-center fw-bold mb-3">➕ Add New Note</h2>
+      <form className="row g-3">
+        <div className="col-12">
           <label htmlFor="title" className="form-label">Title</label>
           <input
             type="text"
@@ -62,10 +62,10 @@ const AddNote = (props) => {
             onChange={onChange}
             required
           />
-          {errors.title && <div className="text-danger">{errors.title}</div>}
+          {errors.title && <div className="invalid-feedback d-block">{errors.title}</div>}
         </div>
 
-        <div className="mb-3">
+        <div className="col-12">
           <label htmlFor="description" className="form-label">Description</label>
           <textarea
             className={`form-control ${errors.description ? "is-invalid" : ""}`}
@@ -77,10 +77,10 @@ const AddNote = (props) => {
             onChange={onChange}
             required
           />
-          {errors.description && <div className="text-danger">{errors.description}</div>}
+          {errors.description && <div className="invalid-feedback d-block">{errors.description}</div>}
         </div>
 
-        <div className="mb-3">
+        <div className="col-12">
           <label htmlFor="tag" className="form-label">Tag</label>
           <input
             type="text"
@@ -93,14 +93,16 @@ const AddNote = (props) => {
           />
         </div>
 
-        <button
-          type="submit" 
-          style={{opacity: "0.7"}}
-          className="btn btn-primary w-100"
-          onClick={handleClick}
-        >
-          Add Note
-        </button>
+        <div className="col-12">
+          <button
+            type="submit"
+            className="btn btn-primary w-100"
+            onClick={handleClick}
+            style={{ opacity: 0.9 }}
+          >
+            Add Note
+          </button>
+        </div>
       </form>
     </div>
   );

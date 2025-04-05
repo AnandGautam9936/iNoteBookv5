@@ -1,28 +1,25 @@
 import React from "react";
-import {
-  Link,
-  useLocation,
-  useNavigate
-} from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function NavBar() {
-  let location = useLocation();
-  let navigate = useNavigate();
-  const handleLogoutClick = () =>{
-    localStorage.removeItem('token')
-    navigate('/login');
-  }
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogoutClick = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg px-3" style={{ background: "#1E1E2F", color: "#fff" }}>
         <div className="container-fluid">
-          {/* Brand Logo with Icon */}
+          {/* Brand Logo */}
           <Link className="navbar-brand fw-bold" to="/" style={{ color: "#D1D5DB" }}>
             <span style={{ fontSize: "1.5rem" }}>📖</span> iNoteBook
           </Link>
 
-          {/* Navbar Toggler for Mobile View */}
+          {/* Toggler */}
           <button
             className="navbar-toggler"
             type="button"
@@ -35,7 +32,7 @@ function NavBar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* Navbar Links */}
+          {/* Links */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -56,21 +53,26 @@ function NavBar() {
               </li>
             </ul>
 
-            {/* Conditional Rendering for Login/Signup or Logout */}
-            {!localStorage.getItem("token") ? (
-              <div className="d-flex">
-                <Link className="btn btn-secondary mx-1 d-flex align-items-center" to="/login">
-                  🔐 Login
-                </Link>
-                <Link className="btn btn-secondary mx-1 d-flex align-items-center text-white" to="/signup">
-                  📝 Sign Up
-                </Link>
-              </div>
-            ) : (
-              <button onClick={handleLogoutClick} className="btn btn-secondary d-flex align-items-center">
-                🔓 Logout
-              </button>
-            )}
+            {/* Auth Buttons (Right Side) */}
+            <div className="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
+              {!localStorage.getItem("token") ? (
+                <>
+                  <Link className="btn btn-secondary my-1 my-lg-0 mx-lg-1 w-100 w-lg-auto" to="/login">
+                    🔐 Login
+                  </Link>
+                  <Link className="btn btn-secondary my-1 my-lg-0 mx-lg-1 text-white w-100 w-lg-auto" to="/signup">
+                    📝 Sign Up
+                  </Link>
+                </>
+              ) : (
+                <button
+                  onClick={handleLogoutClick}
+                  className="btn btn-secondary my-1 my-lg-0 mx-lg-1 w-100 w-lg-auto"
+                >
+                  🔓 Logout
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </nav>
