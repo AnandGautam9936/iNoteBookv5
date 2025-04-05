@@ -28,8 +28,15 @@ function NavBar() {
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            style={{
+              backgroundColor: "#343a40"
+            }}
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon" style={{
+              filter: "invert(1)",
+              width: "24px",
+              height: "24px"
+            }}></span>
           </button>
 
           {/* Links */}
@@ -57,17 +64,17 @@ function NavBar() {
             <div className="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
               {!localStorage.getItem("token") ? (
                 <>
-                  <Link className="btn btn-secondary my-1 my-lg-0 mx-lg-1 w-100 w-lg-auto" to="/login">
+                  <Link className="btn btn-secondary my-1 my-lg-0 mx-lg-1 text-white" to="/login">
                     🔐 Login
                   </Link>
-                  <Link className="btn btn-secondary my-1 my-lg-0 mx-lg-1 text-white w-100 w-lg-auto" to="/signup">
+                  <Link className="btn btn-secondary my-1 my-lg-0 mx-lg-1 text-white" to="/signup">
                     📝 Sign Up
                   </Link>
                 </>
               ) : (
                 <button
                   onClick={handleLogoutClick}
-                  className="btn btn-secondary my-1 my-lg-0 mx-lg-1 w-100 w-lg-auto"
+                  className="btn btn-secondary my-1 my-lg-0 mx-lg-1 text-white"
                 >
                   🔓 Logout
                 </button>
