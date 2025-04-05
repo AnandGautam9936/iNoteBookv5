@@ -3,6 +3,10 @@
 iNoteBook is a simple, efficient, and secure note-taking application built with the MERN stack (MongoDB, Express, React, Node.js). 
 It allows users to create, update, and manage their notes from anywhere, keeping everything organized in one place.
 
+Live Demo - Try the Deloyment
+[https://inotebookv5-5.onrender.com/login]
+
+
 ## 🚀 Features
 
 - 📝 Create, edit, and delete notes
