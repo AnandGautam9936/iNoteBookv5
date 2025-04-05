@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb://0.0.0.0:27017/inotebook"
+const mongoURI = process.env.MONGO_URI || "mongodb://locahost:27017/inotebook";
 
 const connectToMongo = () => {
-    mongoose.connect(mongoURI).then(()=> {
-        console.log("Connected to Db sucessfully...")
-    }).catch((err)=>{
-        console.log("Error :" + err)
-    })
-}
+    mongoose.connect(mongoURI)
+        .then(() => console.log("✅ Connected to MongoDB Atlas"))
+        .catch((err) => console.log("❌ MongoDB Error: " + err));
+};
 
 module.exports = connectToMongo;
